@@ -1,10 +1,10 @@
 Projecto creado por Armando Narcizo Rueda Pérez para InterWare
 
-La estructura es una carpeta por cada componente este incluye una archivo tsx y un archivo css ya que queria probar el modo de archivar de Angular.
+La estructura es una carpeta por cada componente. Este incluye una archivo `.tsx` y un archivo `.css` parecido al modo de archivar de Angular.
 
-Todos los componentes se encuentran en la carpeta "components"
+Todos los componentes se encuentran en la carpeta `components`
 
-Para poder acceder a los mensajes mediante fetch es necesario abrir la pagina con chrome desde ejecutar con el siguiente texto "chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security". Esto es debido a que hay un problema de CORB.
+Para poder acceder a los mensajes mediante `fetch` es necesario abrir la pagina con chrome desde ejecutar con el siguiente texto `chrome.exe --user-data-dir="C:/Chrome dev session --disable-web-security`. Esto es debido a que hay un problema de `CORB`.
 
 Tema del projecto: Gamer Girls Chat
 
@@ -13,6 +13,9 @@ Hasta el dia 02/09/19 no he implementado ningún test aparte del que viene por d
 Utiliza Circle CI para automatizar el desplegado a Firebase Hosting desde GitHub
 
 Las instrucciones para correrlo de manera local son las siguientes:
+
+1. Clona el repositorio
+2. Dentro de la carpeta en la linea de commandos usa `npm install`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
