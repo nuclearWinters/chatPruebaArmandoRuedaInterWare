@@ -1,0 +1,66 @@
+.chatMessages {
+    overflow-y: scroll; 
+    flex: 1;
+}
+
+.messageBox {
+    display: flex; flex-direction: column
+}
+
+.messageData {
+    margin-left: 90px; 
+    margin-top: 0px; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.messageMessage {
+    margin-left: 133px; 
+    font-size: 15px; 
+    color: black; 
+    font-weight: 300;
+    padding-bottom: 20px
+}
+
+.messageDate {
+    margin-left: 15px; 
+    font-size: 14px; 
+    color: #797979;
+}
+
+.messageUser {
+    margin-left: 15px; font-size: 16px; color: black;
+}
+
+.messageImage {
+    border-radius: 48px
+}
+
+.dividerLine {
+    border: 1px solid #cccccc
+}
+
+.dividerDate {
+    text-align: center;
+    padding-top: 10px; 
+    font-size: 15px;
+    color: black; 
+    font-weight: 300;
+    padding-bottom: 20px
+}
+
+.chatMessagePaddingBox {
+    padding-top: 25px; 
+    padding-bottom: 10px
+}
+
+@media only screen and (max-width: 430px) {
+    .messageData {
+        margin-left: 20px; 
+    }
+    
+    .messageMessage {
+        margin-left: 63px; 
+    }
+}

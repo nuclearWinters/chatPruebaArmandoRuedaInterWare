@@ -1,0 +1,22 @@
+.menuInput {
+    height: 60px; 
+    border-bottom-color: #e6e6e6; 
+    border-bottom-width: 1px; 
+    border-bottom-style: solid; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.menuInput div {
+    background-color: #ffffff; display: flex; border-radius: 4px
+}
+
+.menuInput div input {
+    font-family: Roboto; font-weight: 300; font-size: 14px; outline: none; flex: 1; border-radius: 5px; background-color: rgba(0,0,0,0); border-width: 0px; margin: 0px 0px 0px 10px
+}
+
+.menuInput div div {
+    height: 25px; width: 24px; display: flex; align-items: center; justify-content: center
+}

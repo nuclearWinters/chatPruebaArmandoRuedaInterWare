@@ -1,0 +1,87 @@
+.chatInputFixed {
+    height: 70px; 
+    background-color: #f2f2f2; 
+    display: flex;
+}
+
+.imageChatInputFixed {
+    border-radius: 48px; margin-left: 60px; margin: auto 0px auto 60px;
+}
+
+.inputOfChatFixedBox {
+    min-width: 60px;
+    background-color: #ffffff; 
+    height: 30px; 
+    display: flex; 
+    border-radius: 4px; 
+    margin: auto 0px auto 20px; 
+    flex: 1;
+    /*min-width: 180;*/
+}
+
+.inputOfChatFixed {
+    font-family: Roboto; 
+    font-weight: 300; 
+    font-size: 16px; 
+    outline: none; 
+    flex: 1; 
+    height: 25px;
+    border-radius: 5px; 
+    background-color: rgba(0,0,0,0);
+    border-width: 0px; 
+    margin: auto 0px auto 10px
+}
+
+.iconChatInputFixedFirst {
+    height: 16px; 
+    width: 16px; 
+    margin: auto 0px auto 30px;
+}
+
+.iconChatInputFixed {
+    height: 16px; 
+    width: 16px; 
+    margin: auto 0px auto 20px;
+}
+
+.iconChatInputFixedLast {
+    height: 16px; 
+    width: 16px; 
+    margin: auto 60px auto 20px;
+}
+
+@media only screen and (max-width: 470px) {
+    .imageChatInputFixed {
+        margin-left: 15px !important; 
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .imageChatInputFixed {
+        margin-left: 15px !important; 
+    }
+    .iconChatInputFixedLast {
+        margin-right: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .imageChatInputFixed {
+        margin-left: 15px !important; 
+    }
+    .iconChatInputFixedLast {
+        margin-right: 20px !important;
+    }
+    .iconChatInputFixedFirst {
+        display: none
+    }
+    .iconChatInputFixed {
+        display: none
+    }
+    .iconChatInputFixedLast {
+        display: none
+    }
+    .inputOfChatFixedBox {
+        margin-right: 20px !important;
+    }
+}

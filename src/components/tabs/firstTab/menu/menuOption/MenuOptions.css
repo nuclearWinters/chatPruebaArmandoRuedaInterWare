@@ -1,0 +1,101 @@
+td {
+    width: 5.5em;
+}
+
+.entry {
+    position: relative;
+    height: 100%;
+}
+
+.entry__inner {
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center
+}
+
+.entry__text {
+    flex: 1;
+    margin-right: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entry__index {
+    text-align: right();
+}
+
+.menuOptions { 
+    height: 60px; 
+    border-bottom-color: #e6e6e6; 
+    border-bottom-width: 1px; 
+    border-bottom-style: solid; 
+    display: flex; 
+    flex-direction: row
+}
+
+.menuOptions .boxFlex {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.menuOptions .boxFlex .switch {
+    background-color: rgba(255,255,255,.1); 
+    height: 25px; 
+    width: 50px; 
+    border-radius: 20px; 
+    display: flex;
+}
+
+.menuOptions .boxFlex .dropdown {
+    background-color: rgba(255, 255, 255, 0.1); 
+    height: 25px; 
+    width: 140px; 
+    border-radius: 4px; 
+    margin-left: 10px; 
+    display: flex
+}
+
+.menuOptions .boxFlex .switch .switchFlex {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex
+}
+
+.menuOptions .boxFlex .switch .switchFlex .circle {
+    background-color: #22b573;
+    height: 14px;
+    width: 14px;
+    border-radius: 40px;
+}
+
+.menuOptions .boxFlex .dropdown .iconBox {
+    height: 25px;
+    width: 30px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.menuOptions .boxFlex .dropdown .inputBox {
+    flex: 1;
+    color: #cccccc;
+    font-size: 12px
+}
+
+.menuOptions .boxFlex .dropdown .inputIconBox {
+    height: 25px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

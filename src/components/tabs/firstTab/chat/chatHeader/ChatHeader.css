@@ -1,0 +1,225 @@
+.chatHeader {
+    height: 48px;
+    background-color: #e6e6e6; 
+    display: flex; 
+    flex-direction: row;
+}
+
+.chatHeader .image {
+    border-radius: 48px; 
+    margin: auto 0px auto 60px;
+}
+
+.chatHeader .profileName {
+    margin-left: 16px; 
+    margin: auto 0px auto 16px; 
+}
+
+.chatHeader .profileName .profileStatus {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.chatHeader .profileName .profileStatus .icon {
+    height: 13px; 
+    width: 13px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.chatHeader .profileName .profileStatus .circle {
+    background-color: #22b573;
+    height: 13px; 
+    width: 13px; 
+    border-radius: 26px;
+    margin-left: 20px;
+}
+
+.chatHeader .profileName .profileStatus .status {
+    margin-right: 20px;
+}
+
+.chatHeader .profileName .profileStatus .option {
+    width: 130px;
+}
+
+.chatFont {
+    color: #797979; 
+    margin-left: 10px; 
+    font-size: 14px; 
+    font-weight: 300;
+}
+
+.iconChatHeader {
+    height: 16px; 
+    width: 16px; 
+    margin: auto 0px auto 0px
+}
+
+.inputChatHeader {
+    height: 30px; 
+    display: flex; 
+    border-radius: 4px;
+    margin: auto;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.inputChatHeaderBoxLast {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 30px;
+}
+
+.inputChatHeaderBox {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 15px;
+}
+
+.selected {
+    color: #49a9ea
+}
+
+.iconSelected {
+    height: 16px; 
+    width: 16px
+}
+
+.chatInput {
+    font-family: Roboto; 
+    font-weight: 300; 
+    font-size: 16px;
+    outline: none;
+    height: 25px;
+    width: 160px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; 
+    background-color: #ffffff; 
+    border-width: 0px;
+    margin: auto 0px;
+    padding-left: 10px;
+}
+
+.iconSearch {
+    background-color: #ffffff; 
+    height: 27px; width: 16px; margin: auto 0px;
+    padding-right: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; 
+}
+
+.inputChatHeaderBoxFirst {
+    display: flex; 
+    margin-right: 15px; 
+    margin-left: 25px; 
+    align-items: center; 
+    justify-content: center
+}
+
+.inputChatHeaderBoxSelected {
+    padding: 0px 5px; 
+    border-bottom: 2px solid #49a9ea; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+}
+
+.menu.open {
+    transform: translateX(0);
+}
+
+.burgerIcon {
+    height: 48px; 
+    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+}
+
+.burgerIcon div {
+    width: 28px; 
+    background-color: #797979; 
+    height: 3px; 
+    margin: 3px 0px;
+}
+
+@media only screen and (max-width: 1120px) {
+    .inputChatHeaderBoxSelected .chatFont {
+        display: none;
+    }
+    .inputChatHeaderBox .chatFont {
+        display: none;
+    }
+    .inputChatHeaderBoxLast .chatFont {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 970px) {
+    .profileStatus .status {
+        display: none;
+    }
+    .profileStatus .option {
+        display: none;
+    }
+    .profileStatus .circle {
+        margin-right: 20px;
+        margin-left: 0px !important
+    }
+    .profileStatus svg {
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .menu {
+        box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 36px;
+        left: 0px;
+        bottom: 0px;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-out;
+    }
+    .inputChatHeaderBoxLast {
+        margin-right: 15px;
+    }
+    .burgerIcon {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .inputChatHeaderBoxLast {
+        margin-right: 15px;
+    }
+    .burgerIcon {
+        display: flex;
+    }
+    /*.chatHeader .image {
+        margin-left: 15px; 
+    }*/
+    .chatInput {
+        display: none
+    }
+    .iconSearch {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .chatHeader .image {
+        margin-left: 15px; 
+    }
+}

@@ -1,0 +1,29 @@
+.menuLogo {
+    height: 100px; 
+    border-bottom-color: #e6e6e6; 
+    border-bottom-width: 1px; 
+    border-bottom-style: solid; 
+    display: flex; 
+    flex-direction: row
+}
+
+.menuLogo .image {
+    flex: 2; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex
+}
+
+.menuLogo .menuButton {
+    flex: 1; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex
+}
+
+.menuLogo .menuButton div div {
+    width: 18px; 
+    background-color: #cccccc; 
+    height: 2px; 
+    margin: 4px 0px
+}

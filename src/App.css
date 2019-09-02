@@ -1,33 +1,62 @@
-.App {
-  text-align: center;
+html, body {
+  font-family: Roboto;
+  font-weight: 400;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  z-index: 300;
+  background-color: #49a9ea;
+  display: flex;
+  flex-direction: row;
+  height: 36px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.header .tab {
+  font-size: 18; 
+  border-radius: 5;
+  margin: 0px 5px; 
+  padding: 3px 15px; 
+  color: white; 
+  background-color: rgba(255,255,255,.1)
+}
+
+.header .first {
+  margin-left: 20px;
+}
+
+.header .title {
+  flex: 1;
+  text-align: center;
   color: white;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.header .iconBox {
+  background-color: rgba(255,255,255,0.1); 
+  margin: 0px 10px; 
+  height: 26px; 
+  width: 26px; 
+  align-items: center;
+  justify-content: center; 
+  display: flex; 
+  border-radius: 52px
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header .imageProfile {
+  border-radius: 48px; 
+  margin-left: 10px; 
+  margin-right: 25px;
 }
+
+::-webkit-input-placeholder {
+  color: #797979;
+}
+
