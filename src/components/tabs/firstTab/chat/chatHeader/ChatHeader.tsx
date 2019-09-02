@@ -27,7 +27,7 @@ class ChatHeader extends Component<PropsChatHeader, {}> {
                         <div className="chatFont option">
                             <div className="entry">
                                 <div className="entry__inner">
-                                      <span className="entry__text">{` \(★ω★)/ YOU  (*≧ω≦*) ARE  ☆ ～('▽^人)  THE  ヽ(>∀<☆)ノ  BEST  (╯✧▽✧)╯`}</span>
+                                      <span className="entry__text">{`(★ω★)/ YOU  (*≧ω≦*) ARE  ☆ ～('▽^人)  THE  ヽ(>∀<☆)ノ  BEST  (╯✧▽✧)╯`}</span>
                                 </div>
                             </div>
                         </div>
