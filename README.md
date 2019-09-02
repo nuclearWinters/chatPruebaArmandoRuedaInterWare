@@ -1,5 +1,7 @@
 Projecto creado por Armando Narcizo Rueda Pérez para InterWare
 
+[Ir al sitio](https://portafolio-armando.web.app/)
+
 La estructura es una carpeta por cada componente. Este incluye una archivo `.tsx` y un archivo `.css` parecido al modo de archivar de Angular.
 
 Todos los componentes se encuentran en la carpeta `components`
@@ -16,6 +18,7 @@ Las instrucciones para correrlo de manera local son las siguientes:
 
 1. Clona el repositorio
 2. Dentro de la carpeta en la linea de commandos usa `npm install`
+2. Dentro de la carpeta en la linea de commandos usa `npm start`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
