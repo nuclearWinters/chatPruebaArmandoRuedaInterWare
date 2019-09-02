@@ -14,7 +14,7 @@ export const createPost = (postData) => dispatch => {
         type: NEW_POSTS,
         payload: {
             user: {
-                name: "Bender", 
+                name: "#1 Loser", 
                 username: "bender", 
                 id: 1
             }, 

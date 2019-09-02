@@ -12,12 +12,12 @@ const App: React.FC = () => {
     <Provider store={store}>
       <div className="app">
         <div className="header">
-          <div className="tab first">Lorem</div>
-          <div className="tab">Ipsum</div>
+          <div className="tab first">{`(◕‿◕)♡`}</div>
+          <div className="tab">{`<3 (ﾉ◕ヮ◕)ﾉ`}</div>
           <div className="title">
             <div className="entry">
               <div className="entry__inner">
-                  <span className="entry__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span className="entry__text">{`You are my god, I couldn't possibly ever thank you enough. <3  I couldn't possibly think of a good enough reward for the very best Patron I will ever have. <3 If you achieve this tier, please private message me. I'm not sure what reward I could give you, but we'll talk about it. I love you.`}</span>
               </div>
             </div>
           </div>

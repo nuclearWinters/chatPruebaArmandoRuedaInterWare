@@ -23,7 +23,7 @@ export default class MenuOptions extends Component {
                         <div className="inputBox">
                             <div className="entry">
                                 <div className="entry__inner">
-                                    <span className="entry__text">Trabajando remoto</span>
+                                    <span className="entry__text">Ahegao photos</span>
                                 </div>
                             </div>
                         </div>

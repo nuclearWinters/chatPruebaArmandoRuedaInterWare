@@ -8,7 +8,7 @@ export default class MenuInput extends Component {
         return (
             <div className="menuInput">
                 <div>
-                    <input placeholder="Busca personas y canales"/>
+                    <input placeholder="(´• ω •`) ♡ search me out"/>
                     <div>
                         <FontAwesomeIcon color="#797979" icon={faSearch} size="1x"/>
                     </div>

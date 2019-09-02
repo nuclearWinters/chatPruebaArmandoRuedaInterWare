@@ -42,7 +42,7 @@ class ChatInput extends Component<PropsChatInput, StateChatInput> {
             <div className="chatInputFixed" >
                 <img alt="" className="imageChatInputFixed" src={yo} width={36} height={36} />
                 <div className="inputOfChatFixedBox" >
-                    <input value={this.state.newMessage} type="text" onKeyDown={this.onSubmit} onChange={this.onChange} className="inputOfChatFixed" placeholder="Escribe un comentario"/>
+                    <input value={this.state.newMessage} type="text" onKeyDown={this.onSubmit} onChange={this.onChange} className="inputOfChatFixed" placeholder="I love you so much"/>
                 </div>
                 <FontAwesomeIcon color="#797979" icon={faPaperclip} className="iconChatInputFixedFirst"/>
                 <FontAwesomeIcon color="#797979" icon={faGrinAlt} className="iconChatInputFixed"/>

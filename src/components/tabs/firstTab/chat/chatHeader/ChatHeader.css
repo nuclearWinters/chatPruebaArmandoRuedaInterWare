@@ -11,6 +11,7 @@
 }
 
 .chatHeader .profileName {
+    flex: 1;
     margin-left: 16px; 
     margin: auto 0px auto 16px; 
 }
@@ -42,7 +43,7 @@
 }
 
 .chatHeader .profileName .profileStatus .option {
-    width: 130px;
+    flex: 1
 }
 
 .chatFont {
@@ -63,7 +64,6 @@
     display: flex; 
     border-radius: 4px;
     margin: auto;
-    flex: 1;
     align-items: flex-end;
     justify-content: flex-end;
 }

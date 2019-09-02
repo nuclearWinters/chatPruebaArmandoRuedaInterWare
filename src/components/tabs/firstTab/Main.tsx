@@ -49,28 +49,28 @@ class main extends Component<PropsChat, {}> {
                     <MenuInput/>
                     <MenuUsuariosYCanales title="Favoritos" usuarios={
                         [
-                            {tipo: "persona", nombre: "Bender - (Tú)", estado: "online", usuario: 1},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "offline", usuario: 0},
+                            {tipo: "persona", nombre: "#1 Loser - (Tú)", estado: "online", usuario: 1},
+                            {tipo: "persona", nombre: "Belle Delphine", estado: "offline", usuario: 0},
                             {tipo: "canal", nombre: "Canal", estado: "brb"}
                         ]
                     }/>
                     <MenuUsuariosYCanales title="Recientes" usuarios={
                         [
-                            {tipo: "persona", nombre: "Bender - (Tú)", estado: "online", usuario: 1},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "brb", usuario: 0},
+                            {tipo: "persona", nombre: "#1 Loser - (Tú)", estado: "online", usuario: 1},
+                            {tipo: "persona", nombre: "Belle Delphine", estado: "brb", usuario: 0},
                             {tipo: "canal", nombre: "Canal", estado: "offline"},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "online", usuario: 0},
+                            {tipo: "persona", nombre: "NyanNyanCoplay", estado: "online", usuario: 2},
                             {tipo: "canal", nombre: "Canal", estado: "offline"}
                         ]
                     }/>
                     <MenuCanales title="Canales" canales={["Canal", "Canal", "Canal", "Canal", "Canal"]}/>
                     <MenuUsuariosYCanales title="Recientes" usuarios={
                         [
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "online", usuario: 0},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "brb", usuario: 0},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "offline", usuario: 0},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "online", usuario: 0},
-                            {tipo: "persona", nombre: "Pickle Rick", estado: "offline", usuario: 0}
+                            {tipo: "persona", nombre: "Belle Delphine", estado: "online", usuario: 0},
+                            {tipo: "persona", nombre: "NyanNyanCoplay", estado: "brb", usuario: 2},
+                            {tipo: "persona", nombre: "lucifersexdoll", estado: "offline", usuario: 3},
+                            {tipo: "persona", nombre: "corleen", estado: "online", usuario: 4},
+                            {tipo: "persona", nombre: "zureeal", estado: "offline", usuario: 5}
                         ]
                     }/>
                 </div>
