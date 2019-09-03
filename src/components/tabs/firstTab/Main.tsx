@@ -50,7 +50,7 @@ class main extends Component<PropsChat, {}> {
                     <MenuUsuariosYCanales title="Favoritos" usuarios={
                         [
                             {tipo: "persona", nombre: "#1 Loser - (Tú)", estado: "online", usuario: 1},
-                            {tipo: "persona", nombre: "Belle Delphine", estado: "offline", usuario: 0},
+                            {tipo: "persona", nombre: "Belle Delphine", estado: "offline", usuario: 0, isSelected: true},
                             {tipo: "canal", nombre: "Canal", estado: "brb"}
                         ]
                     }/>

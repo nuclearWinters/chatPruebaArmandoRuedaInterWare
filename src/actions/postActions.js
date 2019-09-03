@@ -1,7 +1,7 @@
 import { FETCH_POSTS, NEW_POSTS, CLEAN_POST } from "./types"
 
 export const fetchPosts = () => dispatch => {
-    fetch('https://huc2m17au1.execute-api.us-west-2.amazonaws.com/production/messages')
+    fetch('https://chat-prueba-node.herokuapp.com/')
     .then((response) => response.json())
     .then((posts) => dispatch({
         type: FETCH_POSTS,
@@ -14,8 +14,8 @@ export const createPost = (postData) => dispatch => {
         type: NEW_POSTS,
         payload: {
             user: {
-                name: "#1 Loser", 
-                username: "bender", 
+                name: "Bender", 
+                username: "ender", 
                 id: 1
             }, 
             receiver_id: 2,

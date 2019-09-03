@@ -6,11 +6,11 @@ La estructura es una carpeta por cada componente. Este incluye una archivo `.tsx
 
 Todos los componentes se encuentran en la carpeta `components`
 
-Para poder acceder a los mensajes mediante `fetch` es necesario abrir la pagina con chrome desde ejecutar con el siguiente texto `chrome.exe --user-data-dir="C:/Chrome dev session --disable-web-security`. Esto es debido a que hay un problema de `CORB`.
+Utiliza una apicación en NodeJS desplegada en Heroku para realizar la petición a `https://huc2m17au1.execute-api.us-west2.amazonaws.com/production/messages`
 
 Tema del projecto: Gamer Girls Chat
 
-Hasta el dia 02/09/19 no he implementado ningún test aparte del que viene por default.
+Hasta el dia 03/09/19 no he implementado ningún test aparte del que viene por default.
 
 Utiliza Circle CI para automatizar el desplegado a Firebase Hosting desde GitHub
 

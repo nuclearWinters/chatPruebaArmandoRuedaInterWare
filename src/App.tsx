@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <div className="app">
         <div className="header">
           <div className="tab first">{`(◕‿◕)♡`}</div>
-          <div className="tab">{`<3 (ﾉ◕ヮ◕)ﾉ`}</div>
+          <div className="tab">{`<3(ﾉ◕ヮ◕)ﾉ`}</div>
           <div className="title">
             <div className="entry">
               <div className="entry__inner">
