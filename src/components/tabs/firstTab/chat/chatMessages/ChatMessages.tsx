@@ -3,7 +3,6 @@ import yo from "../../../../../imgs/CARLOS.png"
 import him from "../../../../../imgs/ANGELA.jpg"
 import "./ChatMessages.css"
 import moment from "moment"
-import 'moment/locale/es';
 
 type MessageChat = {
     user: {
