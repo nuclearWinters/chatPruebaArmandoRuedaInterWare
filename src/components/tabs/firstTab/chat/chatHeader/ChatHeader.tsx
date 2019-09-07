@@ -10,7 +10,7 @@ type PropsChatHeader = {
     toggle: Function
 }
 
-class ChatHeader extends Component<PropsChatHeader, {}> {
+export class ChatHeader extends Component<PropsChatHeader, {}> {
     render() {
         return (
             <div className="chatHeader">

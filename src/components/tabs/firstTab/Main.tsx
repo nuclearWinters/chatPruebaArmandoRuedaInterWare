@@ -23,14 +23,14 @@ type MessageChat = {
 }
 
 type PropsChat = {
-    newPost: MessageChat
+    newPost: MessageChat | null
     posts: MessageChat[],
     fetchPosts: Function,
     toggle: boolean
     cleanPost: Function
 }
 
-class main extends Component<PropsChat, {}> {
+export class Main extends Component<PropsChat, {}> {
     UNSAFE_componentWillReceiveProps(nextProps: PropsChat) {
         if (nextProps.newPost) {
             this.props.posts.push(nextProps.newPost)
@@ -90,4 +90,4 @@ const mapStateToProps = (state: {posts: {items: MessageChat[], item: MessageChat
     toggle: state.toggle
 })
 
-export default connect(mapStateToProps, { fetchPosts, cleanPost })(main)
+export default connect(mapStateToProps, { fetchPosts, cleanPost })(Main)
