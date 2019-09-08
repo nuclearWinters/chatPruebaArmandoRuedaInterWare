@@ -10,9 +10,9 @@ import MenuUsuariosYCanales from "./menu/menuUsuariosYCanales/MenuUsuariosYCanal
 import "./Main.css"
 import { connect } from "react-redux"
 import { fetchPosts, cleanPost } from "../../../actions/postActions"
-import { bindActionCreators, AnyAction } from 'redux'
+import { bindActionCreators } from 'redux'
 import { ChatActionTypes } from "../../../actions/types"
-import { Dispatch, Action } from 'redux'
+import { Dispatch } from 'redux'
 
 type MessageChat = {
     user: {
