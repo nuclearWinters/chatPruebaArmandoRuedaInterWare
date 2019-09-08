@@ -5,6 +5,8 @@ import yo from "../../../../../imgs/CARLOS.png"
 import "./ChatInput.css"
 import { connect } from 'react-redux'
 import { createPost } from "../../../../../actions/postActions"
+import { bindActionCreators, Dispatch } from "redux"
+import { ChatActionTypes } from "../../../../../actions/types"
 
 type StateChatInput = {
     newMessage: string
@@ -52,4 +54,6 @@ class ChatInput extends Component<PropsChatInput, StateChatInput> {
     }
 }
 
-export default connect(null, { createPost })(ChatInput)
+const mapDispatchToProps = (dispatch: Dispatch<ChatActionTypes>) => bindActionCreators({ createPost }, dispatch)
+
+export default connect(null, mapDispatchToProps)(ChatInput)

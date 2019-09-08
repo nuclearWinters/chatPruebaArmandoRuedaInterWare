@@ -2,9 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import ConnectedMain, { Main } from "./components/tabs/firstTab/Main"
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import fetchMock from 'fetch-mock'
+import { AnyAction, Action } from "redux"
+import { ThunkDispatch } from "redux-thunk"
 
-import { rootReducer } from './reducers'
+import { Main } from "./components/tabs/firstTab/Main"
+
+import { cleanPost, createPost, fetchPosts } from "./actions/postActions"
+import { toggle } from "./actions/toggleMenuActions"
+
+import { rootReducer, AppState } from './reducers'
 import postReducer from "./reducers/postReducer"
 import toggleReducer from "./reducers/toggleReducer"
 import * as types from './actions/types'
@@ -17,7 +26,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 const posts = [{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Consectetur adipiscing elit."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Incididunt ut labore et dolore magna."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"¡Hola!","date": new Date()}]
 
-const setup = () => {
+const setupChatMessage = () => {
   const props = {
     posts
   }
@@ -43,11 +52,19 @@ const setupMain = () => {
   }
 }
 
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
 //Testeando componente normal
-describe('components', () => {
+describe('Components', () => {
+
   describe('ChatMessages', () => {
+
     it('se renderiza correctamente', () => {
-      const { enzymeWrapper } = setup()
+      const { enzymeWrapper } = setupChatMessage()
       expect(enzymeWrapper.find('div').first().hasClass('chatMessages')).toBe(true)
       expect(enzymeWrapper.find('div').at(1).hasClass('chatMessagePaddingBox')).toBe(true)
       expect(enzymeWrapper.find('div').at(1).children()).toHaveLength(posts.length + 1)
@@ -72,138 +89,221 @@ describe('components', () => {
       expect(enzymeWrapper.find('div').at(1).childAt(6).childAt(0).childAt(1).text()).toMatch(/^(?:[\D]+[,] [\d]?\d \D\D [\D]+)/)
       expect(enzymeWrapper.find('div').at(1).childAt(7).exists()).toBe(true)
       expect(enzymeWrapper.find('div').at(1).childAt(7).prop("style")).toStrictEqual({ float:"left", clear: "both" })
-
     })
+
     it('testeando scrollIntoView', () => {
       Element.prototype.scrollIntoView = jest.fn();  // set scrollIntoView to a spy
       const wrapper = mount(<ChatMessage posts={posts} />);
       wrapper.setProps({ posts: [...posts, {"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"¡Notice me!","date": new Date()}] });
       expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
     })
-    describe('Main', () => {
-      it('se renderiza correctamente el componente conectado cuando se cambia el estado de toggle en redux', () => {
-        const { enzymeWrapper } = setupMain()
-        expect(enzymeWrapper.find('div').first().hasClass('dashboard')).toBe(true)
-        expect(enzymeWrapper.find('div').at(1).hasClass('menu')).toBe(true)
-        enzymeWrapper.setProps({ toggle: true });
-        expect(enzymeWrapper.find('div').at(1).hasClass('menu open')).toBe(true)
-      })
-    })
+
   })
+
+  describe('Main', () => {
+
+    it('se renderiza correctamente cuando se usa el action TOGGLE', () => {
+      const { enzymeWrapper } = setupMain()
+      expect(enzymeWrapper.find('div').first().hasClass('dashboard')).toBe(true)
+      expect(enzymeWrapper.find('div').at(1).hasClass('menu')).toBe(true)
+      enzymeWrapper.setProps({ toggle: true });
+      expect(enzymeWrapper.find('div').at(1).hasClass('menu open')).toBe(true)
+    })
+
+  })
+
 })
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+describe('Reducers', () => {
 
-describe('posts reducer', () => {
-
-  it('regresa el state inicial', () => {
+  it('El state inicial no cambia con ANY_ACTION', () => {
     expect(rootReducer(undefined, types.ANY_ACTION)).toEqual({
       posts: {"item": null, "items": []},
       toggle: false
     })
   })
 
-  it('maneja el NEW_POSTS, FETCH_POSTS, CLEAN_POST', () => {
+  describe('Posts reducers', () => {
 
-    expect(
-      postReducer({item: null, items: []}, {
-        type: types.NEW_POSTS,
-        payload: {
+    it('maneja el NEW_POSTS, FETCH_POSTS, CLEAN_POST', () => {
+      expect(
+        postReducer({item: null, items: []}, {
+          type: types.NEW_POSTS,
+          payload: {
+            message: "¡Hola!",
+            date: new Date(2018, 11, 24)
+          }
+        })
+      ).toEqual({
+        item: {
+          user: {
+              name: "Bender", 
+              username: "bender", 
+              id: 1
+          }, 
+          receiver_id: 2,
           message: "¡Hola!",
           date: new Date(2018, 11, 24)
-        }
+        },
+        items: []
       })
-    ).toEqual({
-      item: {
-        user: {
+      expect(
+        postReducer({item: {
+          user: {
+              name: "Pickle Rick", 
+              username: "pickle rick", 
+              id: 2
+          }, 
+          receiver_id: 1,
+          message: "¡Hola!",
+          date: new Date(2018, 11, 23)
+        }, items: []}, {
+          type: types.NEW_POSTS,
+          payload: {
+            message: "¡Hola!",
+            date: new Date(2018, 11, 24)
+          }
+        })
+      ).toEqual({
+        item: {
+          user: {
             name: "Bender", 
             username: "bender", 
             id: 1
-        }, 
-        receiver_id: 2,
-        message: "¡Hola!",
-        date: new Date(2018, 11, 24)
-      },
-      items: []
-    })
-
-    expect(
-      postReducer({item: {
-        user: {
+          }, 
+          receiver_id: 2,
+          message: "¡Hola!",
+          date: new Date(2018, 11, 24)
+        },
+        items: []
+      })
+      expect(
+        postReducer({item: {
+          user: {
             name: "Pickle Rick", 
             username: "pickle rick", 
             id: 2
-        }, 
-        receiver_id: 1,
-        message: "¡Hola!",
-        date: new Date(2018, 11, 23)
-      }, items: []}, {
-        type: types.NEW_POSTS,
-        payload: {
+          }, 
+          receiver_id: 1,
           message: "¡Hola!",
-          date: new Date(2018, 11, 24)
-        }
+          date: new Date(2018, 11, 23)
+        }, items: []}, {
+          type: types.CLEAN_POST,
+        })
+      ).toEqual({
+        item: null,
+        items: []
       })
-    ).toEqual({
-      item: {
-        user: {
-          name: "Bender", 
-          username: "bender", 
-          id: 1
-        }, 
-        receiver_id: 2,
-        message: "¡Hola!",
-        date: new Date(2018, 11, 24)
-      },
-      items: []
-    })
-
-    expect(
-      postReducer({item: {
-        user: {
-          name: "Pickle Rick", 
-          username: "pickle rick", 
-          id: 2
-        }, 
-        receiver_id: 1,
-        message: "¡Hola!",
-        date: new Date(2018, 11, 23)
-      }, items: []}, {
-        type: types.CLEAN_POST,
+      expect(
+        postReducer({item: null, items: []}, {
+          type: types.FETCH_POSTS,
+          payload: posts
+        })
+      ).toEqual({
+        item: null,
+        items: posts
       })
-    ).toEqual({
-      item: null,
-      items: []
-    })
-
-    expect(
-      postReducer({item: null, items: []}, {
-        type: types.CLEAN_POST,
+      expect(
+        postReducer({item: null, items: posts}, {
+          type: types.FETCH_POSTS,
+          payload: posts
+        })
+      ).toEqual({
+        item: null,
+        items: posts
       })
-    ).toEqual({
-      item: null,
-      items: []
+      expect(
+        postReducer({item: null, items: []}, {
+          type: types.CLEAN_POST,
+        })
+      ).toEqual({
+        item: null,
+        items: []
+      })
     })
 
   })
 
-  it('maneja el TOGGLE', () => {
 
-    expect(
-      toggleReducer(false, {
-        type: types.TOGGLE,
-      })
-    ).toEqual(true)
+  describe('Togle reducers', () => {
+    
+    it('maneja el TOGGLE', () => {
+      expect(
+        toggleReducer(false, {
+          type: types.TOGGLE,
+        })
+      ).toEqual(true)
+      
+      expect(
+        toggleReducer(true, {
+          type: types.TOGGLE,
+        })
+      ).toEqual(false)
+    })
+    
+  })
+})
 
-    expect(
-      toggleReducer(true, {
-        type: types.TOGGLE,
+type DispatchExts = ThunkDispatch<AppState, null, types.ChatActionTypes>;
+
+const middlewares = [thunk]
+const mockStore = configureMockStore<AppState, DispatchExts>(middlewares)
+
+describe('Actions', () => {
+
+  describe('Async post action FETCH_POSTS', () => {
+    afterEach(() => {
+      fetchMock.restore()
+    })
+
+    it('probando async action FETCH_POST', () => {
+      fetchMock.getOnce('https://chat-prueba-node.herokuapp.com/', {
+        body: {"messages":[{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Consectetur adipiscing elit."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Incididunt ut labore et dolore magna."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}]},
       })
-    ).toEqual(false)
+      const expectedActions = [
+        { type: types.FETCH_POSTS, payload: [{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Consectetur adipiscing elit."},{"user":{"name":"Bender","username":"bender","id":1},"receiver_id":2,"message":"Incididunt ut labore et dolore magna."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},{"user":{"name":"Pickle Rick","username":"pickle_rick","id":2},"receiver_id":1,"message":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}] }
+      ]
+      const store = mockStore({ posts: {items: [], item: null}, toggle: false })
+      return store.dispatch(fetchPosts()).then(() => {
+        // return of async actions
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+
+    })
+
+  })
+
+  describe('Sync posts actions CLEAN_POST, NEW_POSTS', () => {
+
+    it('probando action CLEAN_POST', () => {
+      const expectedAction = {
+        type: types.CLEAN_POST,
+      }
+      expect(cleanPost()).toEqual(expectedAction)
+    })
+
+    it('probando action NEW_POSTS', () => {
+      const postData = "¡Hola!"
+      const expectedAction = {
+        type: types.NEW_POSTS,
+        payload: {
+          message: postData,
+          date: new Date()
+        }
+      }
+      expect(createPost(postData)).toEqual(expectedAction)
+    })
+
+  })
+
+  describe('Sync toggle action TOGGLE', () => {
+
+    it('probando action TOGGLE', () => {
+      const expectedAction = {
+        type: types.TOGGLE,
+      }
+      expect(toggle()).toEqual(expectedAction)
+    })
 
   })
 })

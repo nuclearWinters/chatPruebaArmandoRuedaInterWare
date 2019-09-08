@@ -39,9 +39,5 @@ interface CleanPostAction {
 interface ToggleAction {
   type: typeof TOGGLE
 }
-
-interface AnyActionAction {
-  type: typeof ANY_ACTION
-}
   
-export type ChatActionTypes = FetchPostsAction | NewPostsAction | CleanPostAction | ToggleAction | AnyActionAction
+export type ChatActionTypes = FetchPostsAction | NewPostsAction | CleanPostAction | ToggleAction

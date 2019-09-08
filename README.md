@@ -1,4 +1,4 @@
-Projecto creado por Armando Narcizo Rueda Pérez para InterWare
+Projecto creado por Armando Narcizo Rueda Pérez
 
 [Ir al sitio](https://portafolio-armando.web.app/)
 
@@ -10,7 +10,7 @@ Utiliza una apicación en NodeJS desplegada en Heroku para realizar la petición
 
 Tema del projecto: Gamer Girls Chat
 
-Hasta el dia 03/09/19 no he implementado ningún test aparte del que viene por default.
+Se testea el componente ChatMessages, los reducers y los action creators
 
 Utiliza Circle CI para automatizar el desplegado a Firebase Hosting desde GitHub
 

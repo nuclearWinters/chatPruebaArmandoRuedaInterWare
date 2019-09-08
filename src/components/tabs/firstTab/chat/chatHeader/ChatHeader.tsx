@@ -5,6 +5,8 @@ import him from "../../../../../imgs/ANGELA.jpg"
 import "./ChatHeader.css"
 import { toggle } from "../../../../../actions/toggleMenuActions"
 import { connect } from 'react-redux'
+import { bindActionCreators, Dispatch } from "redux"
+import { ChatActionTypes } from "../../../../../actions/types"
 
 type PropsChatHeader = {
     toggle: Function
@@ -61,4 +63,6 @@ export class ChatHeader extends Component<PropsChatHeader, {}> {
     }
 }
 
-export default connect(null, { toggle })(ChatHeader)
+const mapDispatchToProps = (dispatch: Dispatch<ChatActionTypes>) => bindActionCreators({ toggle }, dispatch)
+
+export default connect(null, mapDispatchToProps)(ChatHeader)

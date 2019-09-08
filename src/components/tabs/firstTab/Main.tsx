@@ -10,6 +10,9 @@ import MenuUsuariosYCanales from "./menu/menuUsuariosYCanales/MenuUsuariosYCanal
 import "./Main.css"
 import { connect } from "react-redux"
 import { fetchPosts, cleanPost } from "../../../actions/postActions"
+import { bindActionCreators, AnyAction } from 'redux'
+import { ChatActionTypes } from "../../../actions/types"
+import { Dispatch, Action } from 'redux'
 
 type MessageChat = {
     user: {
@@ -27,7 +30,8 @@ type PropsChat = {
     posts: MessageChat[],
     fetchPosts: Function,
     toggle: boolean
-    cleanPost: Function
+    cleanPost: Function,
+    //dispatch: Function
 }
 
 export class Main extends Component<PropsChat, {}> {
@@ -90,4 +94,6 @@ const mapStateToProps = (state: {posts: {items: MessageChat[], item: MessageChat
     toggle: state.toggle
 })
 
-export default connect(mapStateToProps, { fetchPosts, cleanPost })(Main)
+const mapDispatchToProps = (dispatch: Dispatch<ChatActionTypes>) => bindActionCreators({ fetchPosts, cleanPost }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps )(Main)
